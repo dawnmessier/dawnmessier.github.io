@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,700,700i" rel="stylesheet">
+        <link rel="stylesheet" href="vendor/jquery.findItFast.min.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="flexIt">
+                    <div><h1>Find It Fast</h1></div>
+                    <div><a href="https://dawnmessier.github.io/FindItFast/">GitHub</a></div>
+                </div>
+            </header>
+            <div id="main">
+                <h2>A jQuery search autocomplete plugin with built-in WAI-ARIA</h2>
+                <p>Accessibility for the impaired is often overlooked when building a website. It is a lengthy subject to learn and implement. This plugin is designed to cut down on that effort by providing a search autocomplete (form + list) built with necessary WAI-ARIA HTML. Colors are also chosen for those with color-blindness.</p>
+                <p>For more information on building accessible websites, refer to these sites:</>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/gettingstarted/" target="_blank">Web Accessibility Initiative (WAI)</a></li>
+                        <li><a href="https://webaim.org/techniques/aria/" target="_blank">WebAIM</a></li>
+                    </ul>
+                <h3>Features</h3>
+                <ul>
+                    <li>Meets WAI-ARIA requirements; built-in form input HTML</li>
+                    <li>Handles JSON objects, arrays and AJAX urls</li>
+                    <li>Optionally customize callbacks</li>
+                    <li>Mobile-friendly</li>
+                </ul>
+
+                <h4>Initialize element with unique ID</h4>
+                <div id="search3" class="autoSearch"></div>
+                <div class="flexIt">
+                    <div id="search1" class="autoSearch2"></div>
+                    <div id="search2" class="autoSearch2"></div>
+                </div>
+
+                <h3>Example Code</h3>
+<h4>Include links and position list above input</h4>
+<pre>
+$('#searchABC').findItFast({
+    dataConfig: {
+        type: 'json',
+        src: countriesHrefJSON,
+        maxItems: 7,
+        href: 'href',
+        timer: 1000
+    },
+    templates: {
+        listItems: {
+            position: 'top'
+        }
+    }
+})
+</pre>
+<h4>Ajax API</h4>
+<pre>
+$('#searchAPI1').findItFast({
+    dataConfig: {
+        type: 'url',
+        src: '/countries/search?limit=10',
+        key: 'name',
+        href: 'url',
+        timer: 1000
+    },
+    templates: {
+        form: {
+            inputName: 'q'
+        },
+        listItems: {
+            includeLinks: true
+        }
+    }
+})
+
+$('#searchAPI2').findItFast({
+    dataConfig: {
+        type: 'url',
+        src: '/countries/search?limit=5&key=code',
+        key: 'code'
+    },
+    templates: {
+        form: {
+            inputName: 'q'
+        }
+    },
+    ariaConfig: {
+        includeLiveRegion: true
+    }
+})
+</pre>
+            </div>
+
+            <footer>
+                <div id="search4" class="autoSearch"></div>
+                <cite>&copy; 2018 Dawn Messier</cite>
+            </footer>
+        </div>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="data/countries-json.js"></script>
+        <script src="data/countries-json-href.js"></script>
+        <script src="data/countries-array.js"></script>
+        <script src="vendor/jquery.finditfast.min.js"> </script>
+        <script>
+        $('#search3').findItFast({
+            dataConfig: {
+                type: 'array',
+                src: countriesARRAY,
+                maxItems: 7
+            },
+            templates: {
+                form: {
+                    label: 'Find It Fast',
+                    name: 'multipleSearchForms'
+                },
+                listItems: {
+                    type: 'array'
+                }
+            }
+        })
+
+        $('#search4').findItFast({
+            dataConfig: {
+                type: 'array',
+                src: countriesARRAY,
+                maxItems: 7
+            },
+            templates: {
+                form: {
+                    label: 'Find It Fast',
+                    name: 'multipleSearchForms'
+                },
+                listItems: {
+                    type: 'array',
+                    position: 'top'
+                }
+            }
+        })
+
+            $('#search1').findItFast({
+                dataConfig: {
+                    type: 'json',
+                    src: countriesHrefJSON,
+                    key: 'name',
+                    href: 'href',
+                    timer: 1000
+                },
+                templates: {
+                    form: {
+                        label: 'Search by country name',
+                        hideLabelText: true,
+                        placeholder: 'Search by country name',
+                        name: 'search1form',
+                        includeSubmit: true,
+                        action: 'https://www.google.com'
+                    },
+                    listItems: {
+    					includeLinks: true
+                    }
+                },
+                ariaConfig: {
+                    includeLiveRegion: true
+                }
+            })
+            $('#search2').findItFast({
+                dataConfig: {
+                    type: 'json',
+                    src: countriesJSON,
+                    key: 'code',
+                    maxItems: 5
+                },
+                templates: {
+                    form: {
+                        label: 'Search by country code',
+                        name: 'search2form',
+                        submitHtml: '<img src="images/search.svg" />',
+                        submitType: 'icon',
+                        includeSubmit: true,
+                        action: 'https://www.google.com'
+                    }
+                },
+                ariaConfig: {
+                    includeLiveRegion: true
+                }
+            })
+        </script>
+    </body>
+</html>
