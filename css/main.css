@@ -112,6 +112,10 @@ h3, h4 {
     color: #666;
 }
 
+h5 {
+    margin-bottom: 0;
+}
+
 a {
     color: #264C89;
 }
@@ -142,7 +146,6 @@ header a {
 .autoSearch {
     width: 360px;
     display: block;
-    margin: 0 auto;
 }
 .autoSearch2 {
     width: 360px;
@@ -164,23 +167,13 @@ header a {
 }
 
 #search3 .findItFast-list {
-    left: 90px;
     top: 40px;
-}
-
-#search4 .findItFast-list {
-    left: 90px;
-}
-
-#search4 .findItFast-form label {
-    color: #ffffff;
 }
 
 @media (min-width: 768px) {
     .flexIt {
         flex-wrap: nowrap;
         flex-direction: row;
-        justify-content: center;
     }
 
     header a {
@@ -194,6 +187,10 @@ header a {
     .autoSearch .findItFast-form label {
         display: inline-block;
         margin-right: 10px;
+    }
+
+    .autoSearch2 {
+        width: 385px;
     }
 }
 
